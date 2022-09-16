@@ -1,0 +1,86 @@
+drop table BOARD;
+drop sequence seq_board_no;
+
+--board 테이블 생성
+CREATE TABLE board (
+  no	    NUMBER,
+  title 	VARCHAR2(500),
+  content   VARCHAR2(4000),
+  hit       NUMBER,
+  reg_date  DATE,
+  user_no   NUMBER,
+  DEPTH     NUMBER,
+  pos       NUMBER,
+  REF       NUMBER,
+  filename  varchar2(500),
+  filesize  NUMBER,
+  filename_ varchar2(500),
+  filesize_ NUMBER,
+  pass      varchar2(20),
+  PRIMARY KEY(no),
+  CONSTRAINT c_board_fk FOREIGN KEY (user_no) 
+  REFERENCES users(no)
+);
+
+CREATE SEQUENCE seq_board_no
+INCREMENT BY 1 
+START WITH 1 ;
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트1', '테스트1', 0, sysdate, 1, 0, 0, 1, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트2', '테스트2', 0, sysdate, 2, 0, 0, 2, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트3', '테스트3', 0, sysdate, 3, 0, 0, 3, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트4', '테스트4', 0, sysdate, 2, 0, 0, 4, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트5', '테스트5', 0, sysdate, 1, 0, 0, 5, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트6', '테스트6', 0, sysdate, 1, 0, 0, 6, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트7', '테스트7', 0, sysdate, 2, 0, 0, 7, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트8', '테스트8', 0, sysdate, 3, 0, 0, 8, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트9', '테스트9', 0, sysdate, 2, 0, 0, 9, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트10', '테스트10', 0, sysdate, 3, 0, 0, 10, 
+null, null, null, null, null);
+
+INSERT INTO BOARD(no, TITLE, CONTENT, HIT, REG_DATE, USER_NO, DEPTH, POS, REF,
+FILENAME, FILESIZE, FILENAME_, FILESIZE_, pass)
+values(seq_board_no.nextval ,'테스트11', '테스트11', 0, sysdate, 2, 0, 0, 11, 
+null, null, null, null, null);
+
+SELECT *
+FROM BOARD b ;
+
