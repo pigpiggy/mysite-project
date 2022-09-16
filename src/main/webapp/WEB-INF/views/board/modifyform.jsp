@@ -6,12 +6,12 @@
 <%@ page import="com.kosta.khn.vo.UserVo"%>
 <%@page import="java.util.*"%>
 
-<%   
+<%--<%   
 //수정했을 때 현재 페이지
 int nowPage = Integer.parseInt(request.getParameter("nowPage"));
 String pass = request.getParameter("pass"); //데이터베이스에 입력되는 pass
 System.out.println("pass:" + pass);
-%>
+--%>
 
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ System.out.println("pass:" + pass);
 <script>
    function check(){
       var password = document.getElementById("pass"); //사용자가 jsp페이지에서 입력하는 비번
-      if(<%=pass%>!=password.value){
+      if(${param.pass}!=password.value){
          alert("비밀번호가 틀렸습니다. 다시 입력해 주세요.");
          password.focus();
          return false;
@@ -66,7 +66,7 @@ System.out.println("pass:" + pass);
 					</table>
 				
 					<div class="bottom">
-						<a href="/mysite/board?a=list&nowPage=<%=nowPage%>">취소</a>
+						<a href="/mysite/board?a=list&nowPage=${param.nowPage }">취소</a>
 					
 						<input type="submit" value="수정" onClick="return check();" onKeyup="onlyNumber(this)">
 					</div>
