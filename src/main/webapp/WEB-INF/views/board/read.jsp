@@ -5,7 +5,7 @@
 <%@ page import="com.kosta.khn.dao.BoardDaoImpl"%>
 <%@ page import="com.kosta.khn.dao.BoardDao"%>
 <%@ page import="com.kosta.khn.vo.BoardVo"%>
-<%
+<%--<%
 	int no = Integer.parseInt(request.getParameter("no"));
 	BoardDao dao = new BoardDaoImpl();
 	BoardVo vo = dao.getBoard(no);
@@ -16,7 +16,7 @@
 	String nowPage = (String)request.getAttribute("nowPage");
 	session.setAttribute("vo", vo);
 	System.out.println("vo:" + vo);
-%>
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,19 +51,38 @@
 					<tr> 
      				<td align="center" bgcolor="#DDDDDD">첨부파일1</td>
      				<td bgcolor="" colspan="3">
-     				<% if( filename !=null && !filename.equals("")) {%>
+     				<%--<% if( filename !=null && !filename.equals("")) {
                         <a href="/mysite/board?a=download&filename=${boardVo.filename }">${boardVo.filename }</a>
                      &nbsp;&nbsp;<font color="blue">(${boardVo.filesize }KBytes)</font>  
-                        <%} else{%> 등록된 파일이 없습니다.<%}%>
+                        <%} else{%> 등록된 파일이 없습니다.<%}%>--%>
+                    <c:choose>
+                    	<c:when test ="${not empty boardVo.filename}">
+                    	<a href="/mysite/board?a=download&filename=${boardVo.filename }">${boardVo.filename }</a>
+                    	 &nbsp;&nbsp;<font color="blue">(${boardVo.filesize }KBytes)</font> 
+                    	</c:when>
+                    	<c:otherwise>
+                    	<p> 등록된 파일이 없습니다. </p>
+                    	</c:otherwise>
+                    	</c:choose>
                     </td>
-				   </tr>
+				    </tr>
 					<tr> 
      				<td align="center" bgcolor="#DDDDDD">첨부파일2</td>
      				<td bgcolor="" colspan="3">
-     				<% if( filename_ !=null && !filename_.equals("")) {%>
+     				<%--<% if( filename_ !=null && !filename_.equals("")) {
                         <a href="/mysite/board?a=download&filename=${boardVo.filename_ }">${boardVo.filename_ }</a>
                      &nbsp;&nbsp;<font color="blue">(${boardVo.filesize_ }KBytes)</font>  
-                        <%} else{%> 등록된 파일이 없습니다.<%}%>
+                        <%} else{%> 등록된 파일이 없습니다.<%}%>--%>
+                         <c:choose>
+                    	<c:when test ="${not empty boardVo.filename_}">
+                    	<a href="/mysite/board?a=download&filename=${boardVo.filename_ }">${boardVo.filename_ }</a>
+                    	 &nbsp;&nbsp;<font color="blue">(${boardVo.filesize_ }KBytes)</font> 
+                    	</c:when>
+                    	<c:otherwise>
+                    	<p> 등록된 파일이 없습니다. </p>
+                    	</c:otherwise>
+                    	</c:choose>
+                    </td>
      				</td>
    					</tr>
 						
@@ -72,10 +91,10 @@
 					<a href="/mysite/board">글목록</a>
 					
 					<c:if test="${authUser.no != null }">
-						<a href="/mysite/board?a=reply&nowPage=<%=nowPage %>&ref=${boardVo.ref}&depth=${boardVo.depth}&pos=${boardVo.pos}&userNo=${boardVo.userNo}">답 변</a>
+						<a href="/mysite/board?a=reply&nowPage=${param.nowPage }&ref=${boardVo.ref}&depth=${boardVo.depth}&pos=${boardVo.pos}&userNo=${boardVo.userNo}">답 변</a>
 					</c:if>
 					<c:if test="${authUser.no == boardVo.userNo }">
-						<a href="/mysite/board?a=modifyform&no=${boardVo.no }&nowPage=<%=nowPage%>&pass=${boardVo.pass}">글수정</a>
+						<a href="/mysite/board?a=modifyform&no=${boardVo.no }&nowPage=${param.nowPage }&pass=${boardVo.pass}">글수정</a>
 					</c:if>
 				</div>
 				
