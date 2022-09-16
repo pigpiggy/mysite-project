@@ -1,11 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
+<% pageContext.setAttribute( "newLine", "\n" ); %>
 <%@ page import="com.kosta.khn.dao.BoardDaoImpl"%>
 <%@ page import="com.kosta.khn.dao.BoardDao"%>
 <%@ page import="com.kosta.khn.vo.BoardVo"%>
 <%@ page import="com.kosta.khn.vo.UserVo"%>
 <%@page import="java.util.*"%>
 
-<%
+<%--<%
 		  BoardVo vo = new BoardVo();
 		  String title = vo.getTitle();
 		  String content = vo.getContent(); 
@@ -18,7 +21,10 @@
 		  System.out.println("vo:" + vo);
 		  UserVo authUser = (UserVo) session.getAttribute("authUser");
 		  int userNo =  authUser.getNo();
-%>
+%>		  
+--%>
+
+
 <html>
 <head>
 <title>Reply</title>
@@ -46,14 +52,14 @@ function inNumber(){ //숫자만 입력받기
     <tr>
      <td>제 목</td>
      <td>
-	  <input name="title" size="50" value="┖ 답변 : <%=vo.getTitle() %>" maxlength="50"></td> 
+	  <input name="title" size="50" value="┖ 답변 : ${sessionScope.vo.title }" maxlength="50"></td> 
     </tr>
 	<tr>
      <td>내 용</td>
      <td>
 	   <textarea name="content" rows="12" cols="50">
       	========답변 글을 쓰세요.=======
-     <%=vo.getContent() %>
+     ${sessionScope.vo.content }
      </textarea>
       </td>
     </tr>
@@ -73,11 +79,11 @@ function inNumber(){ //숫자만 입력받기
      <input type="button" value="뒤로" onClick="history.back()"></td>
     </tr> 
    </table>
- <input type="hidden" name="nowPage" value="<%=nowPage%>">
- <input type="hidden" name="ref" value="<%=ref%>">
- <input type="hidden" name="pos" value="<%=pos%>">
- <input type="hidden" name="depth" value="<%=depth%>">
- <input type="hidden" name="userNo" value="<%=userNo%>">
+ <input type="hidden" name="nowPage" value="${nowPage}">
+ <input type="hidden" name="ref" value="${ref}">
+ <input type="hidden" name="pos" value="${pos}">
+ <input type="hidden" name="depth" value="${depth}">
+ <input type="hidden" name="userNo" value="${sessionScope.authUser.no}">
  
 </form> 
 </div>
