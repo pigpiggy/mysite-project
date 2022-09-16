@@ -33,8 +33,8 @@ public class FileUploadServlet extends HttpServlet {
        private static final int MAX_FILE_SIZE      = BYTE * KILOBYTE * 40; //  40MB 가장 큰 파일 용량
        private static final int MAX_REQUEST_SIZE   = BYTE * KILOBYTE * 50; //  client에서 server로 전송 되는 request의 총 용량
 
-       private static final String TEMP_STROAGE  = "/Users/pyuteo/eclipse-workspace/mysite/src/main/webapp/WEB-INF/views/fileupload";
-       private static final String FILE_STROAGE  = "/Users/pyuteo/eclipse-workspace/mysite/src/main/webapp/WEB-INF/views/fileupload";
+       private static final String TEMP_STROAGE  = "C:\\Users\\KOSTA\\eclipse-workspace\\mysite\\src\\main\\webapp\\WEB-INF\\views\\fileupload";
+       private static final String FILE_STROAGE  = "C:\\Users\\KOSTA\\eclipse-workspace\\mysite\\src\\main\\webapp\\WEB-INF\\views\\fileupload";
    
    
    @Override
