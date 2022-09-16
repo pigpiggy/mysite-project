@@ -72,6 +72,7 @@ public class BoardServlet extends HttpServlet {
 
 		} else if ("read".equals(actionName)) {
 			// 게시물 가져오기
+		
 			int no = Integer.parseInt(request.getParameter("no"));
 			BoardDao dao = new BoardDaoImpl();
 			BoardVo boardVo = dao.getBoard(no);
@@ -82,6 +83,8 @@ public class BoardServlet extends HttpServlet {
 			
 			boardVo = dao.getBoard(no);
 			dao.boardCnt(boardVo);
+			HttpSession session = request.getSession();
+	        session.setAttribute("vo", boardVo);	
 
 			System.out.println(boardVo.toString());
 
@@ -151,7 +154,7 @@ public class BoardServlet extends HttpServlet {
 			
 			// 서버에 올라간 경로를 가져옴
 			ServletContext context = getServletContext();
-			String uploadFilePath = "/Users/pyuteo/eclipse-workspace/mysite/src/main/webapp/WEB-INF/views/fileupload";
+			String uploadFilePath = "C:\\Users\\KOSTA\\eclipse-workspace\\mysite\\src\\main\\webapp\\WEB-INF\\views\\fileupload";
 			String filePath = uploadFilePath + File.separator + fileName;
 			
 			System.out.println(" LOG [업로드된 파일 경로] :: " + uploadFilePath);
@@ -194,6 +197,7 @@ public class BoardServlet extends HttpServlet {
 	         String userNo = request.getParameter("userNo");
 	         request.setAttribute("userNo", userNo);
 	         System.out.println("ref:"+ref);
+
 			WebUtil.forward(request, response, "/WEB-INF/views/board/reply.jsp");
 			
 		}else if ("replywrite".equals(actionName)) {
